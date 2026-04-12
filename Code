@@ -13,7 +13,7 @@ public class SudokuGenerator{
         puzzle.printBoard();
     }
     
-    public void printBoard() {
+    public void printBoard(){
         System.out.println("-------------------------");
         
         for(int row = 0; row < 9; row++){
