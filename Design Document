@@ -1,0 +1,25 @@
+Program Overview
+The program creates a solved 9x9 Sudoku board. My program uses an easy to follow math equation to determine the placement of the numbers instead of a complex algorithm. The program outputs a 9x9 such that every row, column and 3x3 box contains only unique numbers and no duplicates.
+
+Data Structures
+I used a 2d array in order to create the 9x9 board. The 9x9 is similar to a Sudoku board, making it easier to design and code the program.
+I used a 1d array to create the base numbers of the board and took the different numbers to fill the board. By using a 1d array to hold the numbers, I don’t need to hard code the numbers for the entire board.
+
+Algorithm Design
+My program generates a solved sudoku board by printing a number from base[] for each board[][]. It uses a nested for loop to count the rows and columns of the 2d array and uses % and / to create a shift in the 1d array. The shift changes the index of the 1d array that gets added to the 2d array board. In order to create the shift, I used the equation int shift = (row % 3) * 3 + (row / 3). The (row % 3) * 3 shifts the index for every three rows. For example, row 0 has {1, 2, 3, 4, 5, 6, 7, 8, 9} and row 1 has {4, 5, 6, 7, 8, 9, 1, 2, 3}. After every three rows, (row / 3) will shift the board by 3 + x amount. This makes it so every column contains a unique set of numbers. In order to make sure the correct number is taken from the 1d array, I used index = (col + shift) % 9. The col+ shift is used to get the correct shift and the %9 prevents the number from exceeding eight. If the number exceeds eight, it will create an ArrayIndexOutOfBoundsException.
+
+Methods
+The public SudokuGenerator() method is the constructor for a new board.
+The main method creates a new board and calls puzzle.generateBoard(); puzzle.printBoard();
+The public void printBoard() method prints out the dashed lines which create the top and the lines separating every three rows.The method also creates the vertical lines that create the sides of the box and separate the numbers further into nine 3x3 boxes of numbers.
+The public void generateBoard() holds the 1d array and carries out the equations needed to fill the board.
+
+Testing Plan
+I tested my program by changing the base 1d with 3 different sets of numbers to see if the program could handle different number sets. The first check I made was with the numbers {1, 2, 3, 4, 5, 6, 7, 8, 9}. The next test I did was inverting the list of numbers into {9, 8, 7, 6, 5, 4, 3, 2, 1}. The third check I made was by scrambling the numbers and using {5, 8, 3, 7, 9, 2, 1, 6, 4}.
+
+Challenges and Solutions
+One challenge I faced was figuring out how to shift the numbers properly to follow the Sudoku rules. 
+I solved the challenge by looking at the example provided. I saw that as the board moved down by one row, it shifted by three spaces. After the board reached the third row, it shifted by one then by three. Then after the sixth row, it shifted by two then by three. The equation for the shift was shift = (row % 3) * 3 + (row / 3). 
+In order to print the unique numbers, I added col + shift in order to move down the 1d array to get each unique number. 
+In order to prevent the program from crashing and creating an ArrayIndexOutOfBoundsException, I used %9 to make sure that if a number became greater than eight, it would wrap around and become less than or equal to eight.
+
