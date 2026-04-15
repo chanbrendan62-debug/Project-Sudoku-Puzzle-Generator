@@ -35,6 +35,15 @@ public class SudokuGenerator{
     
     public void generateBoard(){
         int[] base = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        
+        for(int i = base.length - 1; i > 0; i--){
+            
+            int random = (int)(Math.random() * (i + 1));
+            
+            int temp = base[i];
+            base[i] = base[random];
+            base[random] = temp;
+        }
 
         for(int row = 0; row < 9; row++){
             for(int col = 0; col < 9; col++){
@@ -46,4 +55,6 @@ public class SudokuGenerator{
             }
         }
     }
+    
+    
 }
